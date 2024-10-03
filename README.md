@@ -47,49 +47,41 @@
 </p>
 <br />
 
-ProGuard is a free shrinker, optimizer, obfuscator, and preverifier for Java
-bytecode:
+ProGuard 是一个免费的 Java 字节码压缩器、优化器、混淆器和预验证器：
 
-* It detects and removes unused classes, fields, methods, and attributes.
+- 它检测并删除未使用的类、字段、方法和属性。
 
-* It optimizes bytecode and removes unused instructions.
+- 它优化了字节码并删除了未使用的指令。
 
-* It renames the remaining classes, fields, and methods using short
-  meaningless names.
+- 它使用简短而无意义的名称重命名剩余的类、字段和方法。
 
-The resulting applications and libraries are smaller and faster.
+- 最终的应用程序和库更小、更快。
 
-## ❓ Getting Help
-If you have **usage or general questions** please ask them in the <a href="https://community.guardsquare.com/?utm_source=github&utm_medium=site-link&utm_campaign=github-community">**Guardsquare Community**.</a>  
-Please use <a href="https://github.com/guardsquare/proguard/issues">**the issue tracker**</a> to report actual **bugs 🐛, crashes**, etc.
-<br />
-<br />
 
-## 🚀 Quick Start
+## 🚀 🚀 快速入门
 
-### Command line
+### 1）命令行方式
 
-First, download the latest release from [GitHub releases](https://github.com/Guardsquare/proguard/releases).
+从这下载最新版： [GitHub releases](https://github.com/Guardsquare/proguard/releases).
 
-To run ProGuard, on Linux/MacOS, just type:
+Linux/MacOS：
 
 ```bash
 bin/proguard.sh <options...>
 ```
 
-or on Windows:
+Windows:
 
 ```
 bin\proguard.bat <options...>
 ```
 
-Typically, you'll put most options in a configuration file (say,
-`myconfig.pro`), and just call
+通常，你会把大多数选项放在配置文件中（例如 myconfig.pro），然后只需调用
 
 ```bash
 bin/proguard.sh @myconfig.pro
 ```
-or on Windows:
+或者在 Windows 上：
 
 ```
 bin\proguard.bat @myconfig.pro
@@ -97,11 +89,11 @@ bin\proguard.bat @myconfig.pro
 
 All available options are described in the [configuration section of the manual](https://www.guardsquare.com/manual/configuration/usage).
 
-### Gradle Task
+### 2）Gradle 任务方式
 
-ProGuard can be run as a task in Gradle. Before you can use the proguard task, you have to make sure Gradle can
-find it in its class path at build time. One way is to add the following
-line to your **`build.gradle`** file which will download ProGuard from Maven Central:
+ProGuard 可以作为 Gradle 中的任务运行。在使用 proguard 任务之前，您必须确保 Gradle 可以在构建时在其类路径中找到它。
+
+一种方法是将以下行添加到您的build.gradle文件中，该文件将从 Maven Central 下载 ProGuard：
 
 ```Groovy
 buildscript {
@@ -114,7 +106,7 @@ buildscript {
 }
 ```
 
-You can then define a task with configuration:
+然后您可以使用配置定义一个任务：
 
 ```Groovy
 tasks.register('proguard', ProGuardTask) {
@@ -138,54 +130,44 @@ tasks.register('proguard', ProGuardTask) {
 }
 ```
 
-The embedded configuration is much like a standard ProGuard
-configuration. You can find more details on the [Gradle setup page](https://www.guardsquare.com/manual/setup/gradle).
+嵌入的配置与标准 ProGuard 配置非常相似。您可以在 [Gradle setup page](https://www.guardsquare.com/manual/setup/gradle).设置页面上找到更多详细信息。
 
-## ✨ Features
+## ✨ 特点介绍
 
-ProGuard works like an advanced optimizing compiler, removing unused classes,
-fields, methods, and attributes, shortening identifiers, merging classes,
-inlining methods, propagating constants, removing unused parameters, etc.
+ProGuard 的工作原理类似于高级优化编译器，删除未使用的类、字段、方法和属性，缩短标识符，合并类，内联方法，传播常量，删除未使用的参数等。
 
-* The optimizations typically reduce the size of an application by anything
-  between 20% and 90%. The reduction mostly depends on the size of external
-  libraries that ProGuard can remove in whole or in part.
+优化通常可将应用程序的大小减少 20% 到 90%。减少量主要取决于 ProGuard 可以全部或部分删除的外部库的大小。
 
-* The optimizations may also improve the performance of the application, by up
-  to 20%. For Java virtual machines on servers and desktops, the difference
-  generally isn't noticeable.
+优化还可提高应用程序的性能，最高可达 20%。对于服务器和台式机上的 Java 虚拟机，这种差异通常并不明显。
 
-* ProGuard can also remove logging code, from applications and their
-  libraries, without needing to change the source code &mdash; in fact,
-  without needing the source code at all!
+ProGuard 还可以从应用程序及其库中删除日志代码，而无需更改源代码 - 事实上，根本不需要源代码！
+
+手册页（markdown、 html）详细介绍了 ProGuard 的功能和用法。
 
 The manual pages ([markdown](docs/md),
 [html](https://www.guardsquare.com/proguard/manual)) cover the features and usage of
 ProGuard in detail.
 
-## 💻 Building ProGuard
+## 💻 构建 ProGuard
 
-Building ProGuard is easy - you'll just need a Java 8 JDK installed. 
-To build from source, clone a copy of the ProGuard repository and run the following command:
-
+构建 ProGuard 非常简单 - 您只需要安装 Java 8 JDK。要从源代码构建，请克隆 ProGuard 存储库的副本并运行以下命令：
 ```bash
 ./gradlew assemble
 ```
 
-The artifacts will be generated in the `lib` directory. You can then execute ProGuard using the
-scripts in `bin`, for example:
+工件将在lib目录中生成。然后，您可以使用 中的脚本执行 ProGuard bin，例如：
 
 ```bash
 bin/proguard.sh
 ```
 
-You can publish the artifacts to your local Maven repository using:
+您可以使用以下方式将工件发布到本地 Maven 存储库：
 
 ```bash
 ./gradlew publishToMavenLocal
 ```
 
-## 🤝 Contributing
+## 🤝 贡献 Contributing
 
 Contributions, issues and feature requests are welcome in both projects.
 Feel free to check the [issues](https://github.com/Guardsquare/proguard/issues) page and the [contributing
